@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - SISFFAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cores SISFFAN Extraídas do Brandbook */
+            --color-primary-dark: #1e2538;
+            --color-gold: #C1A270;
+            --color-light-bg: #F8F3ED;
+            --color-red: #5A2A2A;
+            --color-gray: #B8B5AC;
+            --color-white: #ffffff;
+            
+            /* Tipografia */
+            --font-title: 'Montserrat', sans-serif; /* Representando Aktiv Grotesk Ex Medium */
+            --font-body: 'Inter', sans-serif; /* Representando Aktiv Grotesk Ex Regular */
+            
+            /* Espaçamento */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-xxl: 48px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-full: 99px;
+            
+            /* Sombras */
+            --shadow-sm: 0 4px 14px rgba(30, 37, 56, 0.05);
+            --shadow-md: 0 10px 34px rgba(30, 37, 56, 0.08);
+            --shadow-lg: 0 24px 60px rgba(30, 37, 56, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary-dark);
+            background-color: var(--color-light-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--color-gold);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--color-gray);
+            padding-bottom: 10px;
+            color: var(--color-primary-dark);
+        }
+
+        /* Colors Grid */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .color-card {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .color-swatch {
+            height: 120px;
+            width: 100%;
+        }
+
+        .color-info {
+            padding: 15px;
+            background: var(--color-white);
+        }
+
+        .color-name {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Typography */
+        .type-sample {
+            margin-bottom: 30px;
+        }
+        
+        .type-sample h1 { font-family: var(--font-title); font-size: 3rem; font-weight: 800; }
+        .type-sample h2 { font-family: var(--font-title); font-size: 2.2rem; font-weight: 700; }
+        .type-sample h3 { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; }
+        .type-sample p { font-family: var(--font-body); font-size: 1rem; }
+        .type-sample small { font-family: var(--font-body); font-size: 0.8rem; color: #666; }
+
+        /* Components */
+        .component-group {
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            padding: 16px 32px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-dark);
+            color: var(--color-gold);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-gold {
+            background-color: var(--color-gold);
+            color: var(--color-primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-dark);
+            border: 2px solid var(--color-primary-dark);
+        }
+        .btn-outline:hover {
+            background-color: var(--color-primary-dark);
+            color: var(--color-white);
+        }
+
+        .card-component {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        .card-component h4 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background-color: var(--color-gold);
+            color: var(--color-primary-dark);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: var(--font-title);
+        }
+
+        /* Tokens Block */
+        .tokens-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SISFFAN</h1>
+        <p>Design System & Identidade Visual</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- CORES -->
+        <section>
+            <h2 class="section-title">01 — CORES</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--color-primary-dark);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--color-primary-dark);">Primária Dark</div>
+                        <div class="color-hex">#1E2538</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--color-gold);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--color-gold);">Dourado/Sand</div>
+                        <div class="color-hex">#C1A270</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--color-light-bg);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Bege Fundo</div>
+                        <div class="color-hex">#F8F3ED</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--color-red);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--color-red);">Vermelho Escuro</div>
+                        <div class="color-hex">#5A2A2A</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--color-gray);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--color-gray);">Cinza Neutro</div>
+                        <div class="color-hex">#B8B5AC</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIPOGRAFIA -->
+        <section>
+            <h2 class="section-title">02 — TIPOGRAFIA</h2>
+            <p style="margin-bottom: 20px;">Utilizando <strong>Aktiv Grotesk Ex</strong> (Representada por Montserrat para Títulos e Inter para corpo de texto na web).</p>
+            
+            <div class="type-sample">
+                <h1>Título H1 (Medium/Bold)</h1>
+                <h2>Título H2 (Medium/Bold)</h2>
+                <h3>Título H3 (Medium/Bold)</h3>
+                <br>
+                <p>Texto corrido (Regular). A SISFFAN é Forseti aplicado à tecnologia: autoridade que vem da consistência. A marca transmite presidência sem agressividade. Precisa sentir: estabilidade, brilho discreto, autoridade serena.</p>
+                <br>
+                <small>Texto de apoio ou legendas.</small>
+            </div>
+        </section>
+
+        <!-- ESPAÇAMENTO & BORDER RADIUS & SOMBRAS -->
+        <section>
+            <h2 class="section-title">03 — TOKENS DE LAYOUT</h2>
+            <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                <div>
+                    <h3>Border Radius</h3>
+                    <br>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 60px; height: 60px; background: var(--color-primary-dark); border-radius: var(--radius-sm);"></div> 
+                        <span>Small (4px)</span>
+                    </div>
+                    <br>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 60px; height: 60px; background: var(--color-primary-dark); border-radius: var(--radius-md);"></div> 
+                        <span>Medium (8px)</span>
+                    </div>
+                    <br>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 60px; height: 60px; background: var(--color-primary-dark); border-radius: var(--radius-lg);"></div> 
+                        <span>Large (16px)</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Sombras (Depths)</h3>
+                    <br>
+                    <div style="width: 120px; height: 80px; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">Shadow SM</div>
+                    <div style="width: 120px; height: 80px; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">Shadow MD</div>
+                    <div style="width: 120px; height: 80px; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center;">Shadow LG</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPONENTES -->
+        <section>
+            <h2 class="section-title">04 — COMPONENTES</h2>
+            
+            <div class="component-group">
+                <h3>Botões</h3>
+                <br>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <button class="btn btn-primary">Botão Primário</button>
+                    <button class="btn btn-gold">Botão Destaque</button>
+                    <button class="btn btn-outline">Botão Outline</button>
+                </div>
+            </div>
+
+            <div class="component-group" style="margin-top: 40px;">
+                <h3>Card & Badges</h3>
+                
+                <div class="card-component">
+                    <span class="badge">Novo Módulo</span>
+                    <h4 style="margin-top: 15px;">Gestão de Contratos</h4>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Automação e segurança na análise de cláusulas usando IA embarcada, garantindo total conformidade legal.</p>
+                    <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Acessar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOKENS COMPLETOS -->
+        <section>
+            <h2 class="section-title">05 — TOKENS COMPLETO (CSS)</h2>
+            <div class="tokens-block">
+:root {
+  /* Colors */
+  --color-primary-dark: #1E2538;
+  --color-gold: #C1A270;
+  --color-light-bg: #F8F3ED;
+  --color-red: #5A2A2A;
+  --color-gray: #B8B5AC;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-title: 'Aktiv Grotesk Ex', sans-serif;
+  --font-body: 'Aktiv Grotesk Ex', sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 99px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 14px rgba(30, 37, 56, 0.05);
+  --shadow-md: 0 10px 34px rgba(30, 37, 56, 0.08);
+  --shadow-lg: 0 24px 60px rgba(30, 37, 56, 0.12);
+}</div>
+        </section>
+
+    </div>
+</body>
+</html>
