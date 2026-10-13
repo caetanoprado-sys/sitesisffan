@@ -361,14 +361,78 @@
         }
         
         @media (max-width: 768px) {
+            .header-inner {
+                padding: 12px 16px;
+            }
+            .logo-link img {
+                height: 28px;
+            }
+            .main-nav {
+                gap: 8px;
+            }
             .main-nav a:not(.btn) {
                 display: none; 
             }
+            /* Oculta o segundo botao no mobile para manter cabecalho limpo e sem aperto */
+            .main-nav .btn-bordeux {
+                display: none;
+            }
+            .btn-header {
+                padding: 9px 14px;
+                font-size: 0.72rem;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+            }
             .hero-section {
-                padding: 120px 20px 60px;
+                padding: 100px 16px 40px;
+            }
+            .hero-container {
+                gap: 30px;
+            }
+            .hero-content h1 {
+                font-size: 1.85rem;
+                margin-bottom: 16px;
+            }
+            .hero-content p {
+                font-size: 0.98rem;
+                margin-bottom: 24px;
+            }
+            .hero-graphic {
+                aspect-ratio: 16/10;
             }
             .stats-band {
-                padding: 60px 20px;
+                padding: 40px 16px;
+            }
+            .hero-carousel {
+                padding-bottom: 45px;
+            }
+            .hero-nav-controls {
+                gap: 10px;
+                padding: 6px 12px;
+            }
+            .hero-arrow {
+                width: 28px;
+                height: 28px;
+            }
+            .hero-dot {
+                width: 20px;
+                height: 5px;
+            }
+            .hero-dot.active {
+                width: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-inner {
+                padding: 10px 12px;
+            }
+            .logo-link img {
+                height: 25px;
+            }
+            .btn-header {
+                padding: 8px 12px;
+                font-size: 0.68rem;
             }
         }
         /* --- CSS Seção 2: O ponto de partida --- */
@@ -2941,11 +3005,17 @@
         @media (max-width: 960px) {
             .hero-slide-blog {
                 grid-template-columns: 1fr;
-                gap: 28px;
-                padding: 10px 10px 40px;
+                gap: 24px;
+                padding: 10px 16px 30px;
             }
             .blog-slide-img {
-                height: 240px;
+                height: 220px;
+            }
+            .blog-slide-text h2 {
+                font-size: 1.45rem;
+            }
+            .blog-slide-text p {
+                font-size: 0.95rem;
             }
         }
 
