@@ -2734,6 +2734,184 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Botão Bordô */
+        .btn-bordeux {
+            background: #5A2A2A !important;
+            color: var(--color-white) !important;
+            border: none;
+        }
+        .btn-bordeux:hover {
+            background: #7a3a3a !important;
+        }
+        .btn-header-sm {
+            padding: 8px 18px !important;
+            font-size: 0.82rem !important;
+            border-radius: var(--radius-md);
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+        .hero-slide-blog {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .hero-slide-blog .blog-slide-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            background: rgba(193, 162, 112, 0.1);
+            border-radius: 99px;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+        }
+        .hero-slide-blog h2 {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.2;
+        }
+        .hero-slide-blog .btn-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--color-primary-dark);
+            color: var(--color-white);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .hero-slide-blog .btn-blog:hover {
+            background: var(--color-gold);
+            color: var(--color-primary-dark);
+        }
+        .hero-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .hero-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(30, 37, 56, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+        .hero-dot.active {
+            background: var(--color-gold);
+            transform: scale(1.3);
+        }
+
+        /* Judicial Section */
+        .judicial-section {
+            padding: 100px 20px;
+            background: #5A2A2A;
+            position: relative;
+            overflow: hidden;
+        }
+        .judicial-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            pointer-events: none;
+        }
+        .judicial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .judicial-container .section-label {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.7);
+        }
+        .judicial-container h2 {
+            font-family: var(--font-title);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 28px;
+            line-height: 1.15;
+        }
+        .judicial-container p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Botão contrate no pricing */
+        .pricing-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            background: #5A2A2A;
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .pricing-cta-btn:hover {
+            background: #7a3a3a;
+        }
+        .pricing-cta-wrap {
+            text-align: center;
+            margin: 32px auto 56px;
+            max-width: 1280px;
+            position: relative;
+            z-index: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -2745,12 +2923,13 @@
                 <img src="MARCA/HORIZONTAL-02_COR.png" alt="SISFFAN">
             </a>
             <nav class="main-nav">
-                <a href="#modulos">Módulos</a>
-                <a href="#captura">Captura</a>
+                <a href="#modulos">Da dor ao resultado</a>
+                <a href="#antes-do-processo">Preventivo</a>
                 <a href="#planos">Planos</a>
-                <a href="#sobre">Sobre</a>
+                <a href="#para-quem">Para quem é</a>
                 <a href="#blog">Blog</a>
-                <a href="#demo" class="btn btn-gold btn-header">Agendar demonstração</a>
+                <a href="#planos" class="btn btn-bordeux btn-header-sm">Contrate aqui</a>
+                <a href="#cta-demo" class="btn btn-gold btn-header">Agendar demonstração</a>
             </nav>
         </div>
     </header>
@@ -2828,7 +3007,7 @@
                     <span class="section-label">Da dor ao resultado</span>
                     <h2>Processo aqui, prazo ali,<br>equipe em outro lugar.</h2>
                 </div>
-                <p class="problem-intro">Um sistema de prazos resolve a intimação e para por aí. Pareceres, contratos, consultas, ofícios e a gestão da equipe continuam espalhados em planilha, e-mail e WhatsApp.</p>
+                <p class="problem-intro">Aqui você resolve o preventivo, o administrativo e o judicial no mesmo sistema. Pareceres, contratos, consultas, ofícios, processos, prazos e a gestão da equipe, tudo organizado em um só lugar.</p>
             </div>
 
             <div class="pain-grid">
@@ -3023,6 +3202,15 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Seção: Judicial -->
+    <section class="judicial-section" id="judicial">
+        <div class="judicial-container">
+            <span class="section-label">Judicial</span>
+            <h2>Quando o processo chega, ele já encontra tudo organizado.</h2>
+            <p>Publicações e intimações direto na plataforma, prazos processuais com responsável e alertas de vencimento, audiências e diligências em todas as esferas. O contencioso na mesma rotina do preventivo.</p>
         </div>
     </section>
 
@@ -3286,6 +3474,10 @@
             </div>
         </div>
 
+        <div class="pricing-cta-wrap">
+            <a href="#cta-demo" class="pricing-cta-btn">Contrate aqui</a>
+        </div>
+
         <!-- Plano sob medida -->
         <div class="pricing-grid" style="grid-template-columns: 1fr; max-width: 440px; margin-bottom: 48px;">
             <div class="pricing-card custom-plan">
@@ -3315,6 +3507,7 @@
         <div class="pricing-addons">
             <div class="pricing-addons-title">Adicionais disponíveis em qualquer plano</div>
             <div class="pricing-addons-tags">
+                <span class="pricing-addons-tag">Demanda preventiva</span>
                 <span class="pricing-addons-tag">Domicílio Judicial</span>
                 <span class="pricing-addons-tag">Integração de Publicações</span>
                 <span class="pricing-addons-tag">Gestão de Pautistas</span>
@@ -3332,7 +3525,7 @@
                 <div class="impl-step">
                     <div class="impl-step-num">1</div>
                     <div class="impl-step-title">Contato</div>
-                    <div class="impl-step-desc">Por telefone, WhatsApp, e-mail ou presencialmente.</div>
+                    <div class="impl-step-desc">Por telefone, WhatsApp, e-mail, redes sociais, presencialmente ou pelo próprio site.</div>
                 </div>
                 <div class="impl-step">
                     <div class="impl-step-num">2</div>
@@ -3356,53 +3549,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- CTA + Formulário -->
-        <div class="cta-block">
-            <div class="cta-container">
-                <div class="cta-content">
-                    <h2>Quer ver funcionando?<br>Agende uma demonstração.</h2>
-                    <p>Fale com a gente pelo canal que preferir. Mostramos o sistema rodando de verdade, com a rotina do seu escritório.</p>
-
-                    <div class="cta-contact-list">
-                        <div class="cta-contact-item">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                            <a href="https://sisffan.com.br" target="_blank">sisffan.com.br</a>
-                        </div>
-                        <div class="cta-contact-item">
-                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <a href="mailto:contato@sisffan.com.br">contato@sisffan.com.br</a>
-                        </div>
-                        <div class="cta-contact-item">
-                            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-                            <a href="https://instagram.com/sisffan" target="_blank">@sisffan</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cta-form">
-                    <div class="cta-form-title">Solicite uma demonstração</div>
-                    <div class="cta-form-group">
-                        <label>Nome</label>
-                        <input type="text" placeholder="Seu nome completo">
-                    </div>
-                    <div class="cta-form-group">
-                        <label>E-mail</label>
-                        <input type="email" placeholder="seu@email.com">
-                    </div>
-                    <div class="cta-form-group">
-                        <label>Telefone</label>
-                        <input type="tel" placeholder="(00) 00000-0000">
-                    </div>
-                    <div class="cta-form-group">
-                        <label>Mensagem</label>
-                        <textarea placeholder="Conte um pouco sobre sua operação..."></textarea>
-                    </div>
-                    <button class="cta-form-submit">Agendar demonstração</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Seção 9: Blog -->
     <section class="blog-section" id="blog">
@@ -3453,9 +3599,58 @@
         </div>
     </section>
 
+        <!-- CTA + Formulário -->
+        <div class="cta-block" id="cta-demo">
+            <div class="cta-container">
+                <div class="cta-content">
+                    <h2>Quer ver funcionando?<br>Agende uma demonstração.</h2>
+                    <p>Fale com a gente pelo canal que preferir. Mostramos o sistema rodando de verdade, com a rotina do seu escritório.</p>
+
+                    <div class="cta-contact-list">
+                        <div class="cta-contact-item">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <a href="https://sisffan.com.br" target="_blank">sisffan.com.br</a>
+                        </div>
+                        <div class="cta-contact-item">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:contato@sisffan.com.br">contato@sisffan.com.br</a>
+                        </div>
+                        <div class="cta-contact-item">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            <a href="https://instagram.com/sisffan" target="_blank">@sisffan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-form">
+                    <div class="cta-form-title">Solicite uma demonstração</div>
+                    <div class="cta-form-group">
+                        <label>Nome</label>
+                        <input type="text" placeholder="Seu nome completo">
+                    </div>
+                    <div class="cta-form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="cta-form-group">
+                        <label>Telefone</label>
+                        <input type="tel" placeholder="(00) 00000-0000">
+                    </div>
+                    <div class="cta-form-group">
+                        <label>Mensagem</label>
+                        <textarea placeholder="Conte um pouco sobre sua operação..."></textarea>
+                    </div>
+                    <button class="cta-form-submit">Agendar demonstração</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-    <!-- Script para efeito de scroll no header -->
+
+
+
+    <!-- Script para efeito de scroll no header + Hero Carousel -->
     <script>
         const header = document.querySelector('.site-header');
         window.addEventListener('scroll', () => {
@@ -3465,6 +3660,32 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Hero Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = n;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % slides.length);
+        }
+
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        // Pause on hover
+        const carousel = document.querySelector('.hero-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            carousel.addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 5000); });
+        }
     </script>
 </body>
 </html>
