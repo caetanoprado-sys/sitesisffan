@@ -2750,57 +2750,106 @@
             border-radius: var(--radius-md);
         }
 
-        /* Hero Carousel */
+        /* Hero Carousel - Horizontal Slide (Estilo XP Educação) */
         .hero-carousel {
             position: relative;
             width: 100%;
             overflow: hidden;
+            padding-bottom: 50px;
+        }
+        .hero-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+            will-change: transform;
+            width: 100%;
         }
         .hero-slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease;
+            min-width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .hero-slide.active {
-            opacity: 1;
             position: relative;
         }
-        .hero-slide-blog {
-            text-align: center;
-            padding: 60px 20px;
+        .hero-slide .hero-container {
+            width: 100%;
         }
-        .hero-slide-blog .blog-slide-tag {
+
+        /* Blog slides - amplos, visuais, estilo banner XP Educação */
+        .hero-slide-blog {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 50px;
+            align-items: center;
+            padding: 20px 20px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .blog-slide-img {
+            width: 100%;
+            height: 380px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(184, 181, 172, 0.4);
+        }
+        .blog-slide-img-inner {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.6s ease;
+        }
+        .hero-slide-blog:hover .blog-slide-img-inner {
+            transform: scale(1.04);
+        }
+        .blog-slide-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(30, 37, 56, 0.4) 100%);
+            pointer-events: none;
+        }
+        .blog-slide-text {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .blog-slide-text .blog-slide-tag {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--color-gold);
-            background: rgba(193, 162, 112, 0.1);
+            background: rgba(193, 162, 112, 0.15);
+            border: 1px solid rgba(193, 162, 112, 0.3);
             border-radius: 99px;
-            padding: 8px 16px;
-            margin-bottom: 24px;
+            padding: 6px 16px;
+            width: fit-content;
         }
-        .hero-slide-blog h2 {
+        .blog-slide-text h2 {
             font-family: var(--font-title);
-            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-size: clamp(1.7rem, 2.7vw, 2.3rem);
             font-weight: 800;
             color: var(--color-primary-dark);
-            margin-bottom: 20px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.2;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
         }
-        .hero-slide-blog .btn-blog {
+        .blog-slide-text p {
+            font-size: 1.05rem;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+        .blog-slide-text .btn-blog {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             padding: 14px 28px;
             background: var(--color-primary-dark);
             color: var(--color-white);
@@ -2810,33 +2859,94 @@
             font-weight: 700;
             font-size: 0.95rem;
             transition: all 0.3s ease;
+            width: fit-content;
+            box-shadow: 0 4px 14px rgba(30, 37, 56, 0.2);
+            margin-top: 6px;
         }
-        .hero-slide-blog .btn-blog:hover {
+        .blog-slide-text .btn-blog:hover {
             background: var(--color-gold);
             color: var(--color-primary-dark);
+            transform: translateY(-2px);
         }
-        .hero-dots {
+
+        /* Controles de Navegação (Dots com barra expansível + setas) */
+        .hero-nav-controls {
             position: absolute;
-            bottom: 24px;
+            bottom: 0px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
-            z-index: 10;
+            align-items: center;
+            gap: 16px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 18px;
+            border-radius: 99px;
+            border: 1px solid rgba(184, 181, 172, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-        .hero-dot {
-            width: 10px;
-            height: 10px;
+        .hero-arrow {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: rgba(30, 37, 56, 0.2);
+            border: 1px solid rgba(30, 37, 56, 0.15);
+            background: #fff;
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
+            transition: all 0.25s ease;
             padding: 0;
         }
-        .hero-dot.active {
+        .hero-arrow:hover {
+            background: var(--color-primary-dark);
+            color: #fff;
+            border-color: var(--color-primary-dark);
+        }
+        .hero-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-dot {
+            width: 28px;
+            height: 6px;
+            border-radius: 99px;
+            background: rgba(30, 37, 56, 0.18);
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .hero-dot .dot-fill {
+            display: block;
+            height: 100%;
+            width: 0%;
             background: var(--color-gold);
-            transform: scale(1.3);
+            border-radius: 99px;
+        }
+        .hero-dot.active {
+            width: 44px;
+            background: rgba(30, 37, 56, 0.18);
+        }
+        .hero-dot.active .dot-fill {
+            width: 100%;
+            transition: width 5s linear;
+        }
+
+        @media (max-width: 960px) {
+            .hero-slide-blog {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 10px 10px 40px;
+            }
+            .blog-slide-img {
+                height: 240px;
+            }
         }
 
         /* Judicial Section */
@@ -2934,76 +3044,96 @@
         </div>
     </header>
 
-    <!-- Primeira Seção / Hero -->
+    <!-- Primeira Seção / Hero Carrossel Deslizante -->
     <section class="hero-section">
         <div class="hero-bg-shape"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>A rotina do seu departamento jurídico, organizada.</h1>
-                <p>Do preventivo ao contencioso: demandas, processos, equipes e prazos em um só sistema, feito para quem vive a advocacia todos os dias.</p>
-                <a href="#planos" class="btn btn-primary">Quero organizar meu escritório</a>
+        <div class="hero-carousel">
+            <div class="hero-track">
+                <!-- Slide 1: Apresentação Principal do Sistema -->
+                <div class="hero-slide">
+                    <div class="hero-container">
+                        <div class="hero-content">
+                            <h1>A rotina do seu departamento jurídico, organizada.</h1>
+                            <p>Do preventivo ao contencioso: demandas, processos, equipes e prazos em um só sistema, feito para quem vive a advocacia todos os dias.</p>
+                            <a href="#planos" class="btn btn-primary">Quero organizar meu escritório</a>
+                        </div>
+                        
+                        <div class="hero-graphic">
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Artigo Blog 1 -->
+                <div class="hero-slide">
+                    <div class="hero-slide-blog">
+                        <div class="blog-slide-img">
+                            <div class="blog-slide-img-inner" style="background-image: url('TELAS SISTEMA/Prancheta 1-100.jpg');"></div>
+                        </div>
+                        <div class="blog-slide-text">
+                            <span class="blog-slide-tag">Gestão Jurídica</span>
+                            <h2>Como organizar a pauta diária do escritório e evitar perda de prazos</h2>
+                            <p>Estratégias práticas para estruturar a rotina da sua equipe, distribuir tarefas com clareza e ter previsibilidade no consultivo e contencioso.</p>
+                            <a href="#blog" class="btn-blog">Ler artigo completo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Artigo Blog 2 -->
+                <div class="hero-slide">
+                    <div class="hero-slide-blog">
+                        <div class="blog-slide-img">
+                            <div class="blog-slide-img-inner" style="background-image: url('TELAS SISTEMA/Prancheta 3-100.jpg');"></div>
+                        </div>
+                        <div class="blog-slide-text">
+                            <span class="blog-slide-tag">Controladoria</span>
+                            <h2>O verdadeiro custo do honorário não cobrado</h2>
+                            <p>Por que registrar os atos de forma automatizada e integrada à gestão financeira é o divisor de águas na lucratividade do seu escritório.</p>
+                            <a href="#blog" class="btn-blog">Ler artigo completo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Artigo Blog 3 -->
+                <div class="hero-slide">
+                    <div class="hero-slide-blog">
+                        <div class="blog-slide-img">
+                            <div class="blog-slide-img-inner" style="background-image: url('TELAS SISTEMA/Prancheta 5-100.jpg');"></div>
+                        </div>
+                        <div class="blog-slide-text">
+                            <span class="blog-slide-tag">Tecnologia & Setor Público</span>
+                            <h2>A matriz de risco do passivo na visão da Procuradoria</h2>
+                            <p>Como apresentar dados claros e preditivos para os gestores públicos usando relatórios extraídos diretamente da sua plataforma.</p>
+                            <a href="#blog" class="btn-blog">Ler artigo completo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="hero-graphic">
-                <div class="slide"></div>
-                <div class="slide"></div>
-                <div class="slide"></div>
-                <div class="slide"></div>
-                <div class="slide"></div>
-                <div class="slide"></div>
-                <div class="slide"></div>
+
+            <!-- Controles / Dots estilo XP Educação -->
+            <div class="hero-nav-controls">
+                <button class="hero-arrow hero-prev" onclick="prevSlide()" aria-label="Slide anterior">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="hero-dots">
+                    <button class="hero-dot active" onclick="goToSlide(0)"><span class="dot-fill"></span></button>
+                    <button class="hero-dot" onclick="goToSlide(1)"><span class="dot-fill"></span></button>
+                    <button class="hero-dot" onclick="goToSlide(2)"><span class="dot-fill"></span></button>
+                    <button class="hero-dot" onclick="goToSlide(3)"><span class="dot-fill"></span></button>
+                </div>
+                <button class="hero-arrow hero-next" onclick="nextSlide()" aria-label="Próximo slide">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Seção 9: Blog -->
-    <section class="blog-section" id="blog">
-        <div class="blog-header">
-            <span class="section-label">Blog</span>
-            <h2>Conteúdo para quem vive a rotina jurídica.</h2>
-        </div>
-
-        <div class="blog-grid">
-            
-            <!-- Post 1 -->
-            <article class="blog-card">
-                <div class="blog-img"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">Gestão Jurídica</span>
-                    <h3>Como organizar a pauta diária do escritório e evitar perda de prazos</h3>
-                    <p>Estratégias práticas para estruturar a rotina da sua equipe, distribuir tarefas com clareza e ter previsibilidade no consultivo e contencioso.</p>
-                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                </div>
-            </article>
-
-            <!-- Post 2 -->
-            <article class="blog-card">
-                <div class="blog-img" style="background: linear-gradient(135deg, #1a2233, #3a4760);"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">Controladoria</span>
-                    <h3>O verdadeiro custo do honorário não cobrado</h3>
-                    <p>Por que registrar os atos de forma automatizada e integrada à gestão financeira é o divisor de águas na lucratividade do seu escritório.</p>
-                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                </div>
-            </article>
-
-            <!-- Post 3 -->
-            <article class="blog-card">
-                <div class="blog-img" style="background: linear-gradient(135deg, #0f1524, #2a344a);"></div>
-                <div class="blog-content">
-                    <span class="blog-tag">Tecnologia</span>
-                    <h3>A matriz de risco do passivo na visão da Procuradoria</h3>
-                    <p>Como apresentar dados claros e preditivos para os gestores públicos usando relatórios extraídos diretamente da sua plataforma de acompanhamento.</p>
-                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                </div>
-            </article>
-
-        </div>
-
-        <div class="blog-actions">
-            <a href="#" class="btn-outline">Ver todos os artigos</a>
-        </div>
-    </section>
 
     <!-- Faixa de Selos (Redesenhada) -->
     <section class="stats-band">
@@ -3672,6 +3802,55 @@
 
 
 
+    <!-- Seção 9: Blog -->
+    <section class="blog-section" id="blog">
+        <div class="blog-header">
+            <span class="section-label">Blog</span>
+            <h2>Conteúdo para quem vive a rotina jurídica.</h2>
+        </div>
+
+        <div class="blog-grid">
+            
+            <!-- Post 1 -->
+            <article class="blog-card">
+                <div class="blog-img"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Gestão Jurídica</span>
+                    <h3>Como organizar a pauta diária do escritório e evitar perda de prazos</h3>
+                    <p>Estratégias práticas para estruturar a rotina da sua equipe, distribuir tarefas com clareza e ter previsibilidade no consultivo e contencioso.</p>
+                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card">
+                <div class="blog-img" style="background: linear-gradient(135deg, #1a2233, #3a4760);"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Controladoria</span>
+                    <h3>O verdadeiro custo do honorário não cobrado</h3>
+                    <p>Por que registrar os atos de forma automatizada e integrada à gestão financeira é o divisor de águas na lucratividade do seu escritório.</p>
+                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card">
+                <div class="blog-img" style="background: linear-gradient(135deg, #0f1524, #2a344a);"></div>
+                <div class="blog-content">
+                    <span class="blog-tag">Tecnologia</span>
+                    <h3>A matriz de risco do passivo na visão da Procuradoria</h3>
+                    <p>Como apresentar dados claros e preditivos para os gestores públicos usando relatórios extraídos diretamente da sua plataforma de acompanhamento.</p>
+                    <a href="#" class="blog-link">Ler artigo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="blog-actions">
+            <a href="#" class="btn-outline">Ver todos os artigos</a>
+        </div>
+    </section>
+
     <!-- Script para efeito de scroll no header + Hero Carousel -->
     <script>
         const header = document.querySelector('.site-header');
@@ -3683,30 +3862,84 @@
             }
         });
 
-        // Hero Carousel
+        // Hero Carousel - Horizontal Slide (Estilo XP Educação)
         let currentSlide = 0;
+        const track = document.querySelector('.hero-track');
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
+        const totalSlides = slides.length;
+        let autoPlayTimer = null;
+        const SLIDE_DURATION = 5000;
+
+        function resetDotAnimation() {
+            dots.forEach((dot, index) => {
+                const fill = dot.querySelector('.dot-fill');
+                dot.classList.remove('active');
+                if (fill) {
+                    fill.style.transition = 'none';
+                    fill.style.width = '0%';
+                }
+            });
+            const activeDot = dots[currentSlide];
+            if (activeDot) {
+                activeDot.classList.add('active');
+                const fill = activeDot.querySelector('.dot-fill');
+                if (fill) {
+                    // Force repaint
+                    void fill.offsetWidth;
+                    fill.style.transition = `width ${SLIDE_DURATION}ms linear`;
+                    fill.style.width = '100%';
+                }
+            }
+        }
 
         function goToSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-            currentSlide = n;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            if (track) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            resetDotAnimation();
+            startAutoPlay();
         }
 
         function nextSlide() {
-            goToSlide((currentSlide + 1) % slides.length);
+            goToSlide(currentSlide + 1);
         }
 
-        let autoPlay = setInterval(nextSlide, 5000);
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        function startAutoPlay() {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(nextSlide, SLIDE_DURATION);
+        }
+
+        // Start initial state
+        if (track && slides.length > 0) {
+            goToSlide(0);
+        }
 
         // Pause on hover
-        const carousel = document.querySelector('.hero-carousel');
-        if (carousel) {
-            carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
-            carousel.addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 5000); });
+        const carouselEl = document.querySelector('.hero-carousel');
+        if (carouselEl) {
+            carouselEl.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayTimer);
+                const activeFill = dots[currentSlide] ? dots[currentSlide].querySelector('.dot-fill') : null;
+                if (activeFill) {
+                    const computedWidth = window.getComputedStyle(activeFill).width;
+                    activeFill.style.transition = 'none';
+                    activeFill.style.width = computedWidth;
+                }
+            });
+            carouselEl.addEventListener('mouseleave', () => {
+                startAutoPlay();
+                const activeFill = dots[currentSlide] ? dots[currentSlide].querySelector('.dot-fill') : null;
+                if (activeFill) {
+                    activeFill.style.transition = `width ${SLIDE_DURATION}ms linear`;
+                    activeFill.style.width = '100%';
+                }
+            });
         }
     </script>
 </body>
